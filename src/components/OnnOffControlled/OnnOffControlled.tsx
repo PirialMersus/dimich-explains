@@ -1,13 +1,11 @@
 import React, {useState} from "react";
-import s from "./OnOff.module.css"
+import s from "./OnOffControlled.module.css"
 
-type PropsType = {
-    defaultValue?: boolean
+export type OnnOffControlledPropsType = {
+    on: boolean
 }
 
-export function OnnOff(props: PropsType) {
-
-    const [on, setOn] = useState(props.defaultValue ? props.defaultValue : false)
+export function OnnOffControlled(props: OnnOffControlledPropsType) {
 
     const onStyle = {
         marginRight: "10px",
@@ -15,7 +13,7 @@ export function OnnOff(props: PropsType) {
         width: "30px",
         height: "30px",
         border: "1px solid #111",
-        backgroundColor: on ? "green" : "white"
+        backgroundColor: props.on ? "green" : "white"
     }
     const offStyle = {
         marginRight: "10px",
@@ -23,7 +21,7 @@ export function OnnOff(props: PropsType) {
         width: "30px",
         height: "30px",
         border: "1px solid #111",
-        backgroundColor: !on ? "red" : "white"
+        backgroundColor: !props.on ? "red" : "white"
     }
     const circle = {
         marginRight: "10px",
@@ -33,13 +31,13 @@ export function OnnOff(props: PropsType) {
         height: "10px",
         borderRadius: "50%",
         border: "1px solid #111",
-        backgroundColor: on ? "green" : "red"
+        backgroundColor: props.on ? "green" : "red"
     }
 
     return (
         <div className={s.wrapper}>
-            <div style={onStyle} onClick={() => setOn(true)}>On</div>
-            <div style={offStyle} onClick={() => setOn(false)}>Off</div>
+            <div style={onStyle} >On</div>
+            <div style={offStyle}>Off</div>
             <div style={circle}></div>
         </div>
     )

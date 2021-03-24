@@ -23,7 +23,7 @@ type StarPropsType = {
 }
 
 function Star(props: StarPropsType) {
-    return <span onClick={() => {
+    return <span className="star" onClick={() => {
         props.setRating(props.starNumber)
     }}>{props.selected ? <b>Star</b> : "Star"}
     </span>

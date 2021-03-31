@@ -1,5 +1,10 @@
 import React from "react";
 
+type ItemType = {
+    title: string
+    value: any
+}
+
 export type AccordionPropsType = {
     title: string
     /**
@@ -10,6 +15,7 @@ export type AccordionPropsType = {
      * Optional color of header text
      */
     color?: string
+    items: ItemType[]
 }
 
 export function Accordion(props: AccordionPropsType) {
@@ -19,18 +25,22 @@ export function Accordion(props: AccordionPropsType) {
                 title={props.title}
                 color={props.color}
             />
-            {!props.collapsed && <AccordionBody/>}
+            {!props.collapsed && <AccordionBody items={props.items}/>}
         </div>
 
     )
 }
 
-function AccordionBody() {
+export type AccordionBodyPropsType = {
+    items: ItemType[]
+}
+
+function AccordionBody(props: AccordionBodyPropsType) {
     return (
         <ul>
-            <li>1</li>
-            <li>2</li>
-            <li>3</li>
+            {props.items.map((item, index) => {
+                return <li key={index}>{item.title}</li>
+            })}
         </ul>
     )
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.css';
 import {Accordion} from "./components/Accordion/Accordion";
 import {Rating} from "./components/Rating/Rating";
@@ -6,24 +6,45 @@ import {OnnOff} from "./components/OnnOff/OnnOff";
 import UncontrolledAccordion from "./components/UncontrolledAccordion/UncontrolledAccordion";
 import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRating";
 import {OnnOffControlled} from "./components/OnnOffControlled/OnnOffControlled";
+import Select from './components/Select/Select';
 
 function App() {
+    const [value, setValue] = useState(1)
+    const [isSelectCollapsed, setIsSelectCollapsed] = useState(true)
+
+    const items = [
+        {
+            title: "Gena", value: 1
+        },
+        {
+            title: "Kolya", value: 2
+        },
+        {
+            title: "Sergey", value: 3
+        }
+    ]
     return (
         <div className="App">
+            <Select
+                items={items}
+                value={value}
+                isSelectCollapsed={isSelectCollapsed}
+                setIsSelectCollapsed={setIsSelectCollapsed}
+            />
             <PageTittle title="App page tit1e"/>
             {/*<Rating rating={3}/>*/}
-            {/*<Accordion title="Menu" collapsed={true}/>*/}
-            <Accordion title="Users" collapsed={false}/>
+            {/*<Select title="Menu" collapsed={true}/>*/}
+            <Accordion title="Users" collapsed={false} items={items}/>
             <Rating rating={6}/>
-            <OnnOff />
-            <OnnOff />
-
+            <OnnOff/>
+            <OnnOff/>
             <UncontrolledAccordion title="UncontrolledAccordion 1"/>
             <UncontrolledAccordion title="UncontrolledAccordion 2"/>
-            <UncontrolledRating />
-            <UncontrolledRating />
+            <UncontrolledRating/>
+            <UncontrolledRating/>
             <OnnOffControlled on/>
             <OnnOffControlled on={false}/>
+
         </div>
     );
 }

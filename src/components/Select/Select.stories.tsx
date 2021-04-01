@@ -1,55 +1,70 @@
 import React from 'react';
 // also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import {Meta, Story} from '@storybook/react/types-6-0';
+import {Story, Meta} from '@storybook/react/types-6-0';
 
-import {Select, SelectPropsType} from "./Select";
-import UncontrolledAccordion from "../UncontrolledAccordion/UncontrolledAccordion";
+
+import Select, { SelectPropsType } from "./Select";
+import {action} from "@storybook/addon-actions";
+import {items} from "../../App";
+
 
 export default {
-    title: 'Accordion',
+    title: 'Select',
     component: Select,
-    argTypes: {
-        color: {
-            control: 'color',
-            table: {
-                category: 'Colors'
-            }
-        }
-    }
+    // argTypes: {
+    //     backgroundColor: { control: 'color' },
+    // },
 } as Meta;
 
-const Template: Story<SelectPropsType> = (args) => <Select {...args}/>
+// const Template: Story<RatingPropsType> = (args) => <Rating {...args} />;
 
-export const CollapsedMode = Template.bind({})
-CollapsedMode.args = {
-    items: [
-        {
-            title: "Gena", value: "2232332111"
-        },
-        {
-            title: "Kolya", value: "--------"
-        },
-        {
-            title: "Sergey", value: "!@#%^&*(*()"
-        }
-    ]
+export const SelectIsSelectCollapsedFalse = (props: SelectPropsType) => {
+    return (
+        <Select
+            setValue={action("setValue")}
+            items={items}
+            value={1}
+            isSelectCollapsed={false}
+            setIsSelectCollapsed={action("setIsSelectCollapsed")}
+        />)
 }
-
-export const UnCollapsedMode = Template.bind({})
-UnCollapsedMode.args = {
-    items: [
-        {
-            title: "Gena", value: "2232332111"
-        },
-        {
-            title: "Kolya", value: "--------"
-        },
-        {
-            title: "Sergey", value: "!@#%^&*(*()"
-        }
-    ]
+export const SelectIsSelectCollapsedTrue = (props: SelectPropsType) => {
+    return (
+        <Select
+            setValue={action("setValue")}
+            items={items}
+            value={1}
+            isSelectCollapsed={true}
+            setIsSelectCollapsed={action("setIsSelectCollapsed")}
+        />)
 }
-
-export const ModeChanging = () => {
-    return <UncontrolledAccordion title="Click me"/>
+export const SelectWithValue1 = (props: SelectPropsType) => {
+    return (
+        <Select
+            setValue={action("setValue")}
+            items={items}
+            value={1}
+            isSelectCollapsed={true}
+            setIsSelectCollapsed={action("setIsSelectCollapsed")}
+        />)
+}
+export const SelectWithValue2 = (props: SelectPropsType) => {
+    return (
+        <Select
+            setValue={action("setValue")}
+            items={items}
+            value={2}
+            isSelectCollapsed={true}
+            setIsSelectCollapsed={action("setIsSelectCollapsed")}
+        />)
+}
+export const SelectWithValue3 = (props: SelectPropsType) => {
+    return (
+        <Select
+            setValue={action("setValue")}
+            items={items}
+            value={3}
+            isSelectCollapsed={true}
+            setIsSelectCollapsed={action("setIsSelectCollapsed")}
+        />)
 }

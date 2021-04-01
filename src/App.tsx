@@ -8,21 +8,23 @@ import UncontrolledRating from "./components/UncontrolledRating/UncontrolledRati
 import {OnnOffControlled} from "./components/OnnOffControlled/OnnOffControlled";
 import Select from './components/Select/Select';
 
+export const items = [
+    {
+        title: "Gena", value: 1
+    },
+    {
+        title: "Kolya", value: 2
+    },
+    {
+        title: "Sergey", value: 3
+    }
+]
+
 function App() {
     const [value, setValue] = useState(1)
     const [isSelectCollapsed, setIsSelectCollapsed] = useState(true)
 
-    const items = [
-        {
-            title: "Gena", value: 1
-        },
-        {
-            title: "Kolya", value: 2
-        },
-        {
-            title: "Sergey", value: 3
-        }
-    ]
+
     return (
         <div className="App">
             <Select
@@ -30,6 +32,7 @@ function App() {
                 value={value}
                 isSelectCollapsed={isSelectCollapsed}
                 setIsSelectCollapsed={setIsSelectCollapsed}
+                setValue={setValue}
             />
             <PageTittle title="App page tit1e"/>
             {/*<Rating rating={3}/>*/}

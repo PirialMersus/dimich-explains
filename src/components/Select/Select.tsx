@@ -1,6 +1,5 @@
 import React from "react";
 import s from './Select.module.css'
-import {log} from "util";
 
 type ItemType = {
     title: string
